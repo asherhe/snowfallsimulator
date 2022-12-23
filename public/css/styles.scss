@@ -1,0 +1,65 @@
+$color-bg: black;
+$color-text: white;
+$color-faint: #888;
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  overflow: hidden;
+  color: $color-text;
+  background-color: $color-bg;
+}
+
+#container {
+  padding: 10px;
+  width: fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  height: -moz-fit-content;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+}
+
+button {
+  font-size: 0.3em;
+  padding: 2px;
+  background-color: $color-bg;
+  border: 1.5px solid $color-text;
+  border-radius: 2px;
+  color: $color-text;
+  transition: all 0.25s ease-out;
+  &:hover {
+    color: $color-faint;
+    border-color: $color-faint;
+  }
+  &:active {
+    background-color: $color-faint;
+  }
+}
+
+button > sub {
+  transform: scale(0.5);
+}
+
+canvas {
+  // pixelate
+  image-rendering: pixelated;
+
+  // don't antialias fonts
+  // font-smooth: never;
+  // -webkit-font-smoothing: none;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/styles.scss" />
+    <link rel="stylesheet" type="text/css" href="/css/fontawesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/solid.min.css" />
+    <script src="/cdn/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="controls">
+        <button id="slower"><i class="fa-solid fa-backward"></i></button>
+        <button id="faster"><i class="fa-solid fa-forward"></i></button>
+        <button id="restart"><i class="fa-solid fa-arrows-rotate"></i></button>
+        <button id="snow-add">
+          <i class="fa-regular fa-snowflake"></i><sub><i class="fa-solid fa-plus"></i></sub>
+        </button>
+        <button id="snow-sub">
+          <i class="fa-regular fa-snowflake"></i><sub><i class="fa-solid fa-minus"></i></sub>
+        </button>
+        <button id="obj-sub">
+          <i class="fa-regular fa-cube"></i><sub><i class="fa-solid fa-plus"></i></sub>
+        </button>
+        <button id="obj-sub">
+          <i class="fa-regular fa-cube"></i><sub><i class="fa-solid fa-minus"></i></sub>
+        </button>
+      </div>
+      <canvas id="canvas" width="160" height="120"></canvas>
+    </div>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
