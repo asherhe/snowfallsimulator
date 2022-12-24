@@ -65,7 +65,7 @@ async function copy(from, to) {
       case ".scss":
       case ".sass":
         let cssPath = changeExt(from, ".css");
-        console.log(`\x1b[33mcompiling Sass: \x1b[32m${from}\x1b[0m -> \x1b[36m${cssPath}\x1b[0m`);
+        console.log(`\x1b[33mcompiling sass: \x1b[32m${from}\x1b[0m -> \x1b[36m${cssPath}\x1b[0m`);
         let result = sass.compile(from);
         fs.writeFileSync(cssPath, result.css);
         break;

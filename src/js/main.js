@@ -210,7 +210,9 @@ let updateInterval = setInterval(tick, config.tickspeed);
 function setTickspeed(ms) {
   if (config.minTickspeed <= ms && ms <= config.maxTickspeed) {
     config.tickspeed = ms;
-    clearInterval(updateInterval);
-    updateInterval = setInterval(tick, ms);
+    if (!paused) {
+      clearInterval(updateInterval);
+      updateInterval = setInterval(tick, ms);
+    }
   }
 }
