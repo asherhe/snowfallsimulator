@@ -4,6 +4,17 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 // buttons
+let paused = false;
+$("#pause").on("click", (e) => {
+  paused = !paused;
+  if (paused) {
+    $("#pause").html('<i class="fa-solid fa-play"></i>');
+    clearInterval(updateInterval);
+  } else {
+    $("#pause").html('<i class="fa-solid fa-pause"></i>');
+    updateInterval = setInterval(tick, config.tickspeed);
+  }
+});
 $("#slower").on("click", (e) => {
   setTickspeed(config.tickspeed * 2);
 });

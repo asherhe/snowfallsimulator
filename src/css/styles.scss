@@ -35,12 +35,17 @@ body {
 }
 
 button {
-  font-size: 0.3em;
+  width: 15px;
+  height: 15px;
   padding: 2px;
-  background-color: $color-bg;
   border: 1.5px solid $color-text;
   border-radius: 2px;
+
+  font-size: 0.3em;
+
   color: $color-text;
+  background-color: $color-bg;
+
   transition: all 0.25s ease-out;
   &:hover {
     color: $color-faint;
@@ -52,7 +57,8 @@ button {
 }
 
 button > sub {
-  transform: scale(0.5);
+  position: absolute;
+  transform: translate(0, 50%) translate(-1px, -1px) scale(0.5);
 }
 
 canvas {
