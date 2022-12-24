@@ -21,7 +21,6 @@ const minifyConfig = {
     options: {
       mangle: {
         keep_fargs: true,
-        keep_quoted: true,
         properties: true,
       },
     },
@@ -77,13 +76,15 @@ async function copy(from, to) {
 
     // minify files
     if (!/\.min\..+$/.test(from)) {
-      if (minifyConfig[ext] != undefined) {
+      if (ext in minifyConfig) {
         console.log(`\x1b[33mminifying: \x1b[36m${to}\x1b[0m`);
         minify({
           compressor: minifyConfig[ext].compressor,
           input: to,
           output: to,
           options: minifyConfig[ext].options,
+        }).catch((err) => {
+          console.log(err);
         });
       }
     }
