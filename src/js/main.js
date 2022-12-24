@@ -5,13 +5,16 @@ const ctx = canvas.getContext("2d");
 
 // buttons
 let paused = false;
-$("#pause").on("click", (e) => {
+var $pause = $("#pause");
+$pause.on("click", (e) => {
   paused = !paused;
   if (paused) {
-    $("#pause").html('<i class="fa-solid fa-play"></i>');
+    $pause.html('<i class="fa-solid fa-play"></i>');
+    $pause.addClass("active");
     clearInterval(updateInterval);
   } else {
-    $("#pause").html('<i class="fa-solid fa-pause"></i>');
+    $pause.html('<i class="fa-solid fa-pause"></i>');
+    $pause.removeClass("active");
     updateInterval = setInterval(tick, config.tickspeed);
   }
 });
@@ -35,8 +38,31 @@ $("#snow-sub").on("click", (e) => {
 $("#obj-add").on("click", (e) => {
   // todo
 });
-$("#obj-sub").on("click", (e) => {
+let $objSub = $("#obj-sub"),
+  deleteObj = false;
+$objSub.on("click", (e) => {
   // todo
+  deleteObj = !deleteObj;
+  if (deleteObj) $objSub.addClass("active");
+  else $objSub.removeClass("active");
+});
+$("#download").on("click", (e) => {
+  /** @type {HTMLCanvasElement} */
+  let saveBuffer = document.getElementById("save-buffer"),
+    sctx = saveBuffer.getContext("2d");
+  saveBuffer.width = canvas.width * config.saveScale;
+  saveBuffer.height = canvas.height * config.saveScale;
+
+  for (let x = 0; x < canvas.width; x++)
+    for (let y = 0; y < canvas.height; y++) {
+      let pxdata = ctx.getImageData(x, y, 1, 1);
+      sctx.fillStyle = `rgb(${pxdata.data[0]},${pxdata.data[1]},${pxdata.data[2]})`;
+      sctx.fillRect(x * config.saveScale, y * config.saveScale, config.saveScale, config.saveScale);
+    }
+
+  saveBuffer.toBlob((blob) => {
+    saveAs(blob, "snowfall.png");
+  });
 });
 
 let $container = $("#container");
@@ -75,6 +101,7 @@ const config = {
   snowflakes: 10, // snowflakes per tick
   maxSnowflakes: 200,
   minSnowflakes: 0,
+  saveScale: 4,
 };
 
 function makeGrid(width, height, val = 0) {

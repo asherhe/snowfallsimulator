@@ -1,6 +1,7 @@
 $color-bg: black;
 $color-text: white;
 $color-faint: #888;
+$color-accent: #3a9ac4;
 
 html,
 body {
@@ -54,6 +55,15 @@ button {
   &:active {
     background-color: $color-faint;
   }
+
+  &.active {
+    border-color: $color-accent;
+    color: $color-accent;
+
+    &:active {
+      background-color: $color-accent;
+    }
+  }
 }
 
 button > sub {
@@ -68,4 +78,8 @@ canvas {
   // don't antialias fonts
   // font-smooth: never;
   // -webkit-font-smoothing: none;
+
+  &#save-buffer {
+    display: none;
+  }
 }

@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href="/css/fontawesome.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/solid.min.css" />
     <script src="/cdn/jquery.min.js"></script>
+    <script src="/cdn/Blob.js"></script>
+    <script src="/cdn/FileSaver.min.js"></script>
+    <script src="/cdn/canvas-toBlob.js"></script>
   </head>
   <body>
     <div id="container">
@@ -26,9 +29,13 @@
         <button id="obj-sub">
           <i class="fa-regular fa-cube"></i><sub><i class="fa-solid fa-minus"></i></sub>
         </button>
+        <button id="download"><i class="fa-solid fa-download"></i></button>
       </div>
       <canvas id="canvas" width="160" height="120"></canvas>
     </div>
     <script src="/js/main.js"></script>
+
+    <!-- for saving the current display; hidden -->
+    <canvas id="save-buffer"></canvas>
   </body>
 </html>
