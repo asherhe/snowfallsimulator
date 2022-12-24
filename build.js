@@ -49,6 +49,11 @@ const minifyConfig = {
   },
 };
 
+/**
+ *
+ * @param {string} from
+ * @param {string} to
+ */
 async function copy(from, to) {
   console.log(`copying \x1b[32m${from}\x1b[0m -> \x1b[36m${to}\x1b[0m`);
 
@@ -64,7 +69,7 @@ async function copy(from, to) {
     switch (ext) {
       case ".scss":
       case ".sass":
-        let cssPath = changeExt(from, ".css");
+        let cssPath = changeExt(to, ".css");
         console.log(`\x1b[33mcompiling sass: \x1b[32m${from}\x1b[0m -> \x1b[36m${cssPath}\x1b[0m`);
         let result = sass.compile(from);
         fs.writeFileSync(cssPath, result.css);
@@ -75,7 +80,17 @@ async function copy(from, to) {
     }
 
     // minify files
-    if (!/\.min\..+$/.test(from)) {
+    let minimize = !/\.min\..+$/.test(from);
+    if (minimize) {
+      for (let excludeDir of config.noMinimize) {
+        excludeDir = path.join(config.srcDir, excludeDir);
+        if (from.substring(0, excludeDir.length) == excludeDir) {
+          minimize = false;
+          break;
+        }
+      }
+    }
+    if (minimize) {
       if (ext in minifyConfig) {
         console.log(`\x1b[33mminifying: \x1b[36m${to}\x1b[0m`);
         minify({
