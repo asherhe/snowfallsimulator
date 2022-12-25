@@ -69,10 +69,10 @@ async function copy(from, to) {
     switch (ext) {
       case ".scss":
       case ".sass":
-        let cssPath = changeExt(to, ".css");
-        console.log(`\x1b[33mcompiling sass: \x1b[32m${from}\x1b[0m -> \x1b[36m${cssPath}\x1b[0m`);
+        to = changeExt(to, ".css");
+        console.log(`\x1b[33mcompiling sass: \x1b[32m${from}\x1b[0m -> \x1b[36m${to}\x1b[0m`);
         let result = sass.compile(from);
-        fs.writeFileSync(cssPath, result.css);
+        fs.writeFileSync(to, result.css);
         break;
       default:
         fs.copyFileSync(from, to);
@@ -93,7 +93,7 @@ async function copy(from, to) {
     if (minimize) {
       if (ext in minifyConfig) {
         console.log(`\x1b[33mminifying: \x1b[36m${to}\x1b[0m`);
-        minify({
+        await minify({
           compressor: minifyConfig[ext].compressor,
           input: to,
           output: to,
