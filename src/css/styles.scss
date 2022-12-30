@@ -47,13 +47,15 @@ button {
   color: $color-text;
   background-color: $color-bg;
 
-  transition: all 0.25s ease-out;
+  transition: all 0.5s cubic-bezier(0.25, 0.93, 0.56, 1.43);
   &:hover {
     color: $color-faint;
     border-color: $color-faint;
+    transform: scale(1.25);
   }
   &:active {
     background-color: $color-faint;
+    transform: scale(1.2);
   }
 
   &.active {
