@@ -36,6 +36,8 @@ body {
 }
 
 button {
+  position: relative;
+
   width: 15px;
   height: 15px;
   padding: 2px;
@@ -45,7 +47,7 @@ button {
   font-size: 0.3em;
 
   color: $color-text;
-  background-color: $color-bg;
+  background-color: transparent;
 
   transition: all 0.5s cubic-bezier(0.25, 0.93, 0.56, 1.43);
   &:hover {
@@ -66,11 +68,48 @@ button {
       background-color: $color-accent;
     }
   }
+
+  &.disabled {
+    color: $color-faint;
+    border-color: $color-faint;
+    &:hover,
+    &:active {
+      color: $color-faint;
+      border-color: $color-faint;
+      background-color: transparent;
+      transform: none;
+    }
+  }
+
+  & sub {
+    position: absolute;
+    transform: translate(0, 50%) translate(-1px, -1px) scale(0.5);
+  }
 }
 
-button > sub {
-  position: absolute;
-  transform: translate(0, 50%) translate(-1px, -1px) scale(0.5);
+*[hover-text] {
+  &::before {
+    content: attr(hover-text);
+
+    color: $color-text;
+    background-color: lighten($color-bg, 10%);
+
+    position: absolute;
+
+    font-size: 5px;
+
+    width: max-content;
+    padding: 1px;
+    border-radius: 1px;
+
+    top: 100%;
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  &:hover::before {
+    opacity: 1;
+  }
 }
 
 canvas {

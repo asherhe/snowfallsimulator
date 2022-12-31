@@ -6,36 +6,39 @@
     <link rel="stylesheet" type="text/css" href="/css/fontawesome.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/solid.min.css" />
     <script src="/cdn/jquery.min.js"></script>
-    <script src="/cdn/Blob.js"></script>
+    <script src="/cdn/Blob.min.js"></script>
     <script src="/cdn/FileSaver.min.js"></script>
-    <script src="/cdn/canvas-toBlob.js"></script>
+    <script src="/cdn/canvas-toBlob.min.js"></script>
   </head>
   <body>
     <div id="container">
       <div id="controls">
-        <button id="pause"><i class="fa-solid fa-pause"></i></button>
-        <button id="slower"><i class="fa-solid fa-backward"></i></button>
-        <button id="faster"><i class="fa-solid fa-forward"></i></button>
-        <button id="restart"><i class="fa-solid fa-arrows-rotate"></i></button>
-        <button id="snow-add">
+        <button id="pause" hover-text="pause the simulation"><i class="fa-solid fa-pause"></i></button>
+        <button id="slower" hover-text="decrease simulation speed"><i class="fa-solid fa-backward"></i></button>
+        <button id="faster" hover-text="Speed. I am speed"><i class="fa-solid fa-forward"></i></button>
+        <button id="restart" hover-text="restarts the entire thing"><i class="fa-solid fa-arrows-rotate"></i></button>
+        <button id="snow-add" hover-text="adds MORE snow(!!!)">
           <i class="fa-regular fa-snowflake"></i><sub><i class="fa-solid fa-plus"></i></sub>
         </button>
-        <button id="snow-sub">
+        <button id="snow-sub" hover-text="less snow">
           <i class="fa-regular fa-snowflake"></i><sub><i class="fa-solid fa-minus"></i></sub>
         </button>
-        <button id="obj-add">
+        <button id="obj-add" class="disabled" hover-text="adds objects to the simulation - WIP">
           <i class="fa-regular fa-cube"></i><sub><i class="fa-solid fa-plus"></i></sub>
         </button>
-        <button id="obj-sub">
+        <button id="obj-sub" class="disabled" hover-text="deletes an added object - WIP">
           <i class="fa-regular fa-cube"></i><sub><i class="fa-solid fa-minus"></i></sub>
         </button>
-        <button id="download"><i class="fa-solid fa-download"></i></button>
+        <button id="download" hover-text="download a screenshot of the simulation">
+          <i class="fa-solid fa-download"></i>
+        </button>
       </div>
       <canvas id="canvas" width="160" height="120"></canvas>
     </div>
-    <script src="/js/main.js"></script>
 
     <!-- for saving the current display; hidden -->
     <canvas id="save-buffer"></canvas>
+
+    <script src="/js/main.js"></script>
   </body>
 </html>
