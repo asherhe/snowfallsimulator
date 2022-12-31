@@ -112,6 +112,47 @@ button {
   }
 }
 
+#obj-menu {
+  display: none;
+  .active > & {
+    display: flex;
+  }
+  flex-direction: column;
+  gap: 2px;
+
+  position: absolute;
+  transform: translate(-3.5px, 4px); // depends on padding and border of button
+
+  $item-width: 10px;
+  max-height: 4 * $item-width;
+  overflow-y: scroll;
+  border: 1.5px solid $color-text;
+  border-radius: 2px;
+
+  background-color: $color-bg;
+
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & > img {
+    image-rendering: pixelated;
+    width: $item-width;
+    padding: 0.1 * $item-width;
+    border-radius: 0.1 * $item-width;
+
+    background-color: $color-bg;
+
+    transition: background-color 0.25s ease-out;
+
+    &:hover {
+      background-color: lighten($color-bg, 20%);
+    }
+  }
+}
+
 canvas {
   // pixelate
   image-rendering: pixelated;
